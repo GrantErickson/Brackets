@@ -1,0 +1,19 @@
+## .NET build output
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+## Test results
+[Tt]est[Rr]esult*/
+*.trx
+
+## Generated artifacts
+*.pdf
+out.json
+out.pdf
+
+## Rider / VS Code
+.idea/
+.vscode/

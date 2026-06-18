@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Brackets.Cli/Brackets.Cli.csproj" />
+    <Project Path="src/Brackets.Core/Brackets.Core.csproj" />
+    <Project Path="src/Brackets.Pdf/Brackets.Pdf.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Brackets.Tests/Brackets.Tests.csproj" />
+  </Folder>
+</Solution>
