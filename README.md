@@ -49,20 +49,42 @@ Targets `net10.0` and compiles as **C# 10** (`<LangVersion>10</LangVersion>`).
 ## CLI
 
 ```
-brackets generate --teams <8-16> [--json <path>] [--pdf <path>] [--style <sheet|diagram>] [--names <file>]
-brackets pdf      (--teams <8-16> | --input <bracket.json>) --output <path> [--style <sheet|diagram>]
+brackets                                (default: same as 'all')
+brackets all      [--output <dir>]
+brackets generate --teams <8-16> [--json <path>] [--pdf <path>] [--style <diagram|sheet>] [--names <file>]
+brackets pdf      (--teams <8-16> | --input <bracket.json>) --output <path> [--style <diagram|sheet>]
 brackets validate (--teams <8-16> | --input <bracket.json>)
 brackets help
 ```
 
+### Build everything (default)
+
+Run with **no arguments** (or `all`) to generate every bracket size 8–16 and every artifact — the
+JSON, the one-page **diagram** PDF, and the multi-page **sheet** PDF — for each, all in one process:
+
+```bash
+# Writes 27 files (9 sizes x JSON + diagram + sheet) into ./out/
+dotnet run --project src/Brackets.Cli
+
+# Same, into a directory of your choice
+dotnet run --project src/Brackets.Cli -- all --output dist
+```
+
+Files are named `bracket-<n>.json`, `bracket-<n>-diagram.pdf`, and `bracket-<n>-sheet.pdf`. The
+generated `out/` directory is **committed to the repo** so the brackets can be browsed directly on
+GitHub (see [out/](out/)); re-run `brackets all` to refresh it.
+
 Examples:
 
 ```bash
-# Generate JSON and a printable game-sheet PDF for 12 teams
+# Generate JSON and the default one-page bracket diagram for 12 teams
 dotnet run --project src/Brackets.Cli -- generate --teams 12 --json bracket.json --pdf bracket.pdf
 
-# Generate a traditional left-to-right bracket diagram
-dotnet run --project src/Brackets.Cli -- pdf --teams 16 --output diagram.pdf --style diagram
+# The PDF defaults to the traditional left-to-right diagram on a single, bracket-sized page
+dotnet run --project src/Brackets.Cli -- pdf --teams 16 --output diagram.pdf
+
+# Opt in to the multi-page, hand-fillable per-round game sheet instead
+dotnet run --project src/Brackets.Cli -- pdf --teams 16 --output sheet.pdf --style sheet
 
 # Print the JSON to stdout
 dotnet run --project src/Brackets.Cli -- generate --teams 16
@@ -75,13 +97,15 @@ identity is always the numeric seed.
 
 Two renderers consume the same generated bracket:
 
-- **`sheet`** (default) — `PdfBracketRenderer`: a hand-fillable game sheet on Letter/landscape, grouped
-  by synchronous round (each round has a "Start time" line), with blank name lines, score boxes, and
-  winner/loser routing per game.
-- **`diagram`** — `BracketDiagramRenderer`: a traditional left-to-right bracket. Teams start at the left
-  and advance right to the champion. The three decks are stacked in vertical bands (Winners, 1-loss,
-  2-loss) with the finals on the right; cross-deck loser drops are shown as matched `L → G#` / `L#`
-  labels (rather than long crossing lines). The page is sized to fit the whole diagram (poster style).
+- **`diagram`** (default) — `BracketDiagramRenderer`: a traditional left-to-right bracket. Teams start at
+  the left and advance right to the champion. The three decks are stacked in vertical bands (Winners,
+  1-loss, 2-loss) with the finals on the right; cross-deck loser drops are shown as matched `L → G#` / `L#`
+  labels (rather than long crossing lines). The whole bracket is drawn on a **single page sized to fit it**
+  (poster style) — the page dimensions grow with the bracket and are deliberately *not* rounded to a
+  standard paper size, so nothing is split across pages.
+- **`sheet`** — `PdfBracketRenderer`: a hand-fillable game sheet on Letter/landscape, grouped by
+  synchronous round (each round has a "Start time" line), with blank name lines, score boxes, and
+  winner/loser routing per game. This is a multi-page document (one stack of round blocks).
 
 ```csharp
 using Brackets.Pdf;

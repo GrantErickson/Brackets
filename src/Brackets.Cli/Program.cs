@@ -14,7 +14,8 @@ try
         "generate" => Generate(parser),
         "pdf" => Pdf(parser),
         "validate" => Validate(parser),
-        "help" or "--help" or "-h" or "" => Help(0),
+        "all" or "" => All(parser),
+        "help" or "--help" or "-h" => Help(0),
         _ => Help(1, $"Unknown command '{parser.Verb}'."),
     };
 }
@@ -22,6 +23,33 @@ catch (Exception ex)
 {
     Console.Error.WriteLine($"Error: {ex.Message}");
     return 1;
+}
+
+// Default command (run with no arguments): generate every bracket size and every artifact at once.
+static int All(ArgParser p)
+{
+    string dir = p.Get("output") ?? "out";
+    Directory.CreateDirectory(dir);
+
+    int brackets = 0;
+    for (int teams = BracketOptions.MinTeams; teams <= BracketOptions.MaxTeams; teams++)
+    {
+        var bracket = BracketGenerator.Generate(new BracketOptions { TeamCount = teams });
+
+        string jsonPath = Path.Combine(dir, $"bracket-{teams}.json");
+        string diagramPath = Path.Combine(dir, $"bracket-{teams}-diagram.pdf");
+        string sheetPath = Path.Combine(dir, $"bracket-{teams}-sheet.pdf");
+
+        File.WriteAllText(jsonPath, BracketJson.Serialize(bracket));
+        BracketDiagramRenderer.Save(bracket, diagramPath);   // one-page left-to-right diagram
+        PdfBracketRenderer.Save(bracket, sheetPath);          // multi-page fillable game sheet
+
+        Console.WriteLine($"{teams,2} teams -> {Path.GetFileName(jsonPath)}, {Path.GetFileName(diagramPath)}, {Path.GetFileName(sheetPath)}");
+        brackets++;
+    }
+
+    Console.WriteLine($"Done. {brackets} brackets x (JSON + diagram + sheet) = {brackets * 3} files in '{dir}{Path.DirectorySeparatorChar}'.");
+    return 0;
 }
 
 static int Generate(ArgParser p)
@@ -72,8 +100,10 @@ static int Pdf(ArgParser p)
 
 static string PdfStyle(ArgParser p)
 {
-    string style = (p.Get("style") ?? "sheet").ToLowerInvariant();
-    return style is "diagram" or "bracket" ? "diagram" : "sheet";
+    // Default to the single-page, content-sized left-to-right diagram; opt in to the
+    // multi-page hand-fillable game sheet with --style sheet.
+    string style = (p.Get("style") ?? "diagram").ToLowerInvariant();
+    return style is "sheet" or "card" ? "sheet" : "diagram";
 }
 
 static void SavePdf(ArgParser p, Bracket bracket, string path)
@@ -149,26 +179,31 @@ games and any team can climb back to win the championship. All games in a round 
 sequence number and are played at the same time.
 
 USAGE
-  brackets generate --teams <8-16> [--json <path>] [--pdf <path>] [--style <sheet|diagram>] [--names <file>]
-  brackets pdf      (--teams <8-16> | --input <bracket.json>) --output <path> [--style <sheet|diagram>]
+  brackets                                (default: same as 'all')
+  brackets all      [--output <dir>]
+  brackets generate --teams <8-16> [--json <path>] [--pdf <path>] [--style <diagram|sheet>] [--names <file>]
+  brackets pdf      (--teams <8-16> | --input <bracket.json>) --output <path> [--style <diagram|sheet>]
   brackets validate (--teams <8-16> | --input <bracket.json>)
   brackets help
 
 OPTIONS
   --teams <n>     Number of teams (8-16).
   --json <path>   Write the bracket as JSON. (generate)
-  --pdf <path>    Write a fillable PDF. (generate)
-  --output <path> Output PDF path. (pdf)
-  --style <s>     PDF layout: 'sheet' (per-round game sheet, default) or 'diagram'
-                  (traditional left-to-right bracket diagram).
+  --pdf <path>    Write a PDF. (generate)
+  --output <p>    'all': output directory (default 'out'). 'pdf': output file path.
+  --style <s>     PDF layout: 'diagram' (default) draws the whole traditional left-to-right
+                  bracket on ONE page sized to fit it (not a standard paper size); 'sheet'
+                  is a per-round, hand-fillable game sheet on Letter paper (multiple pages).
   --input <path>  Read a previously generated bracket JSON instead of generating.
   --names <file>  Text file of team names, one per line, assigned to seeds 1..n.
 
 EXAMPLES
+  brackets                              (build everything: every size 8-16, JSON + both PDFs, into out/)
+  brackets all --output dist            (same, into dist/)
   brackets generate --teams 12 --json bracket.json --pdf bracket.pdf
   brackets generate --teams 16          (prints JSON to stdout)
-  brackets pdf --teams 10 --output sheet.pdf
-  brackets pdf --teams 16 --output diagram.pdf --style diagram");
+  brackets pdf --teams 16 --output bracket.pdf             (one-page diagram, default)
+  brackets pdf --teams 10 --output sheet.pdf --style sheet (multi-page fillable sheet)");
 
     return exitCode;
 }

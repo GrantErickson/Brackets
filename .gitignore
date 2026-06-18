@@ -14,6 +14,17 @@ obj/
 out.json
 out.pdf
 
+## ...but the demo output in out/ (JSON + both PDF styles for every bracket size, produced by
+## 'brackets all') IS committed so the brackets can be browsed directly on GitHub. Re-include
+## the folder and its contents past the '*.pdf' rule above.
+!out/
+!out/**
+
+## ...but the source project is named Brackets.Pdf; on case-insensitive filesystems
+## (Windows/macOS) the '*.pdf' rule above matches that folder, so keep it tracked.
+## Re-including just the directory lets git descend; bin/ and obj/ inside it stay ignored.
+!src/Brackets.Pdf/
+
 ## Rider / VS Code
 .idea/
 .vscode/

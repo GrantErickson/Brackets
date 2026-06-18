@@ -1,0 +1,790 @@
+{
+  "teamCount": 16,
+  "format": "three-life",
+  "sequenceCount": 11,
+  "games": [
+    {
+      "gameNumber": 1,
+      "sequenceNumber": 1,
+      "bracket": "W",
+      "round": 1,
+      "team1": {
+        "kind": "seed",
+        "ref": 1
+      },
+      "team2": {
+        "kind": "seed",
+        "ref": 16
+      },
+      "winnerNextGame": 9,
+      "winnerNextSlot": 1,
+      "loserNextGame": 16,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 2,
+      "sequenceNumber": 1,
+      "bracket": "W",
+      "round": 1,
+      "team1": {
+        "kind": "seed",
+        "ref": 8
+      },
+      "team2": {
+        "kind": "seed",
+        "ref": 9
+      },
+      "winnerNextGame": 9,
+      "winnerNextSlot": 2,
+      "loserNextGame": 16,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 3,
+      "sequenceNumber": 1,
+      "bracket": "W",
+      "round": 1,
+      "team1": {
+        "kind": "seed",
+        "ref": 4
+      },
+      "team2": {
+        "kind": "seed",
+        "ref": 13
+      },
+      "winnerNextGame": 10,
+      "winnerNextSlot": 1,
+      "loserNextGame": 17,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 4,
+      "sequenceNumber": 1,
+      "bracket": "W",
+      "round": 1,
+      "team1": {
+        "kind": "seed",
+        "ref": 5
+      },
+      "team2": {
+        "kind": "seed",
+        "ref": 12
+      },
+      "winnerNextGame": 10,
+      "winnerNextSlot": 2,
+      "loserNextGame": 17,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 5,
+      "sequenceNumber": 1,
+      "bracket": "W",
+      "round": 1,
+      "team1": {
+        "kind": "seed",
+        "ref": 2
+      },
+      "team2": {
+        "kind": "seed",
+        "ref": 15
+      },
+      "winnerNextGame": 11,
+      "winnerNextSlot": 1,
+      "loserNextGame": 18,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 6,
+      "sequenceNumber": 1,
+      "bracket": "W",
+      "round": 1,
+      "team1": {
+        "kind": "seed",
+        "ref": 7
+      },
+      "team2": {
+        "kind": "seed",
+        "ref": 10
+      },
+      "winnerNextGame": 11,
+      "winnerNextSlot": 2,
+      "loserNextGame": 18,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 7,
+      "sequenceNumber": 1,
+      "bracket": "W",
+      "round": 1,
+      "team1": {
+        "kind": "seed",
+        "ref": 3
+      },
+      "team2": {
+        "kind": "seed",
+        "ref": 14
+      },
+      "winnerNextGame": 12,
+      "winnerNextSlot": 1,
+      "loserNextGame": 19,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 8,
+      "sequenceNumber": 1,
+      "bracket": "W",
+      "round": 1,
+      "team1": {
+        "kind": "seed",
+        "ref": 6
+      },
+      "team2": {
+        "kind": "seed",
+        "ref": 11
+      },
+      "winnerNextGame": 12,
+      "winnerNextSlot": 2,
+      "loserNextGame": 19,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 9,
+      "sequenceNumber": 2,
+      "bracket": "W",
+      "round": 2,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 1
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 2
+      },
+      "winnerNextGame": 13,
+      "winnerNextSlot": 1,
+      "loserNextGame": 20,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 10,
+      "sequenceNumber": 2,
+      "bracket": "W",
+      "round": 2,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 3
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 4
+      },
+      "winnerNextGame": 13,
+      "winnerNextSlot": 2,
+      "loserNextGame": 20,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 11,
+      "sequenceNumber": 2,
+      "bracket": "W",
+      "round": 2,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 5
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 6
+      },
+      "winnerNextGame": 14,
+      "winnerNextSlot": 1,
+      "loserNextGame": 21,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 12,
+      "sequenceNumber": 2,
+      "bracket": "W",
+      "round": 2,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 7
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 8
+      },
+      "winnerNextGame": 14,
+      "winnerNextSlot": 2,
+      "loserNextGame": 21,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 13,
+      "sequenceNumber": 3,
+      "bracket": "W",
+      "round": 3,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 9
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 10
+      },
+      "winnerNextGame": 15,
+      "winnerNextSlot": 1,
+      "loserNextGame": 24,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 14,
+      "sequenceNumber": 3,
+      "bracket": "W",
+      "round": 3,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 11
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 12
+      },
+      "winnerNextGame": 15,
+      "winnerNextSlot": 2,
+      "loserNextGame": 24,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 15,
+      "sequenceNumber": 4,
+      "bracket": "W",
+      "round": 4,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 13
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 14
+      },
+      "winnerNextGame": 44,
+      "winnerNextSlot": 1,
+      "loserNextGame": 27,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 16,
+      "sequenceNumber": 2,
+      "bracket": "B1",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 1
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 2
+      },
+      "winnerNextGame": 22,
+      "winnerNextSlot": 1,
+      "loserNextGame": 30,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 17,
+      "sequenceNumber": 2,
+      "bracket": "B1",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 3
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 4
+      },
+      "winnerNextGame": 22,
+      "winnerNextSlot": 2,
+      "loserNextGame": 30,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 18,
+      "sequenceNumber": 2,
+      "bracket": "B1",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 5
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 6
+      },
+      "winnerNextGame": 23,
+      "winnerNextSlot": 1,
+      "loserNextGame": 31,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 19,
+      "sequenceNumber": 2,
+      "bracket": "B1",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 7
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 8
+      },
+      "winnerNextGame": 23,
+      "winnerNextSlot": 2,
+      "loserNextGame": 31,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 20,
+      "sequenceNumber": 3,
+      "bracket": "B1",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 9
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 10
+      },
+      "winnerNextGame": 25,
+      "winnerNextSlot": 1,
+      "loserNextGame": 32,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 21,
+      "sequenceNumber": 3,
+      "bracket": "B1",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 11
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 12
+      },
+      "winnerNextGame": 25,
+      "winnerNextSlot": 2,
+      "loserNextGame": 32,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 22,
+      "sequenceNumber": 3,
+      "bracket": "B1",
+      "round": 2,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 16
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 17
+      },
+      "winnerNextGame": 26,
+      "winnerNextSlot": 1,
+      "loserNextGame": 33,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 23,
+      "sequenceNumber": 3,
+      "bracket": "B1",
+      "round": 2,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 18
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 19
+      },
+      "winnerNextGame": 26,
+      "winnerNextSlot": 2,
+      "loserNextGame": 33,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 24,
+      "sequenceNumber": 4,
+      "bracket": "B1",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 13
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 14
+      },
+      "winnerNextGame": 27,
+      "winnerNextSlot": 2,
+      "loserNextGame": 35,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 25,
+      "sequenceNumber": 4,
+      "bracket": "B1",
+      "round": 2,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 20
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 21
+      },
+      "winnerNextGame": 28,
+      "winnerNextSlot": 1,
+      "loserNextGame": 35,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 26,
+      "sequenceNumber": 4,
+      "bracket": "B1",
+      "round": 3,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 22
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 23
+      },
+      "winnerNextGame": 28,
+      "winnerNextSlot": 2,
+      "loserNextGame": 36,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 27,
+      "sequenceNumber": 5,
+      "bracket": "B1",
+      "round": 2,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 15
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 24
+      },
+      "winnerNextGame": 29,
+      "winnerNextSlot": 1,
+      "loserNextGame": 38,
+      "loserNextSlot": 1
+    },
+    {
+      "gameNumber": 28,
+      "sequenceNumber": 5,
+      "bracket": "B1",
+      "round": 4,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 25
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 26
+      },
+      "winnerNextGame": 29,
+      "winnerNextSlot": 2,
+      "loserNextGame": 38,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 29,
+      "sequenceNumber": 6,
+      "bracket": "B1",
+      "round": 5,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 27
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 28
+      },
+      "winnerNextGame": 43,
+      "winnerNextSlot": 1,
+      "loserNextGame": 40,
+      "loserNextSlot": 2
+    },
+    {
+      "gameNumber": 30,
+      "sequenceNumber": 3,
+      "bracket": "B2",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 16
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 17
+      },
+      "winnerNextGame": 34,
+      "winnerNextSlot": 1
+    },
+    {
+      "gameNumber": 31,
+      "sequenceNumber": 3,
+      "bracket": "B2",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 18
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 19
+      },
+      "winnerNextGame": 34,
+      "winnerNextSlot": 2
+    },
+    {
+      "gameNumber": 32,
+      "sequenceNumber": 4,
+      "bracket": "B2",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 20
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 21
+      },
+      "winnerNextGame": 36,
+      "winnerNextSlot": 2
+    },
+    {
+      "gameNumber": 33,
+      "sequenceNumber": 4,
+      "bracket": "B2",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 22
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 23
+      },
+      "winnerNextGame": 37,
+      "winnerNextSlot": 1
+    },
+    {
+      "gameNumber": 34,
+      "sequenceNumber": 4,
+      "bracket": "B2",
+      "round": 2,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 30
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 31
+      },
+      "winnerNextGame": 37,
+      "winnerNextSlot": 2
+    },
+    {
+      "gameNumber": 35,
+      "sequenceNumber": 5,
+      "bracket": "B2",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 24
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 25
+      },
+      "winnerNextGame": 39,
+      "winnerNextSlot": 1
+    },
+    {
+      "gameNumber": 36,
+      "sequenceNumber": 5,
+      "bracket": "B2",
+      "round": 2,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 26
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 32
+      },
+      "winnerNextGame": 39,
+      "winnerNextSlot": 2
+    },
+    {
+      "gameNumber": 37,
+      "sequenceNumber": 5,
+      "bracket": "B2",
+      "round": 3,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 33
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 34
+      },
+      "winnerNextGame": 40,
+      "winnerNextSlot": 1
+    },
+    {
+      "gameNumber": 38,
+      "sequenceNumber": 6,
+      "bracket": "B2",
+      "round": 1,
+      "team1": {
+        "kind": "loserOf",
+        "ref": 27
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 28
+      },
+      "winnerNextGame": 41,
+      "winnerNextSlot": 1
+    },
+    {
+      "gameNumber": 39,
+      "sequenceNumber": 6,
+      "bracket": "B2",
+      "round": 3,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 35
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 36
+      },
+      "winnerNextGame": 41,
+      "winnerNextSlot": 2
+    },
+    {
+      "gameNumber": 40,
+      "sequenceNumber": 7,
+      "bracket": "B2",
+      "round": 4,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 37
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 29
+      },
+      "winnerNextGame": 42,
+      "winnerNextSlot": 1
+    },
+    {
+      "gameNumber": 41,
+      "sequenceNumber": 7,
+      "bracket": "B2",
+      "round": 4,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 38
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 39
+      },
+      "winnerNextGame": 42,
+      "winnerNextSlot": 2
+    },
+    {
+      "gameNumber": 42,
+      "sequenceNumber": 8,
+      "bracket": "B2",
+      "round": 5,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 40
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 41
+      },
+      "winnerNextGame": 43,
+      "winnerNextSlot": 2
+    },
+    {
+      "gameNumber": 43,
+      "sequenceNumber": 9,
+      "bracket": "F",
+      "round": 1,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 29
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 42
+      },
+      "winnerNextGame": 44,
+      "winnerNextSlot": 2,
+      "note": "Lower final: 1-loss champion vs 2-loss champion. Loser is eliminated."
+    },
+    {
+      "gameNumber": 44,
+      "sequenceNumber": 10,
+      "bracket": "F",
+      "round": 2,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 15
+      },
+      "team2": {
+        "kind": "winnerOf",
+        "ref": 43
+      },
+      "winnerNextGame": 45,
+      "winnerNextSlot": 1,
+      "loserNextGame": 45,
+      "loserNextSlot": 2,
+      "note": "Grand final: undefeated winners-deck champion vs comeback challenger."
+    },
+    {
+      "gameNumber": 45,
+      "sequenceNumber": 11,
+      "bracket": "F",
+      "round": 3,
+      "team1": {
+        "kind": "winnerOf",
+        "ref": 44
+      },
+      "team2": {
+        "kind": "loserOf",
+        "ref": 44
+      },
+      "ifNecessary": true,
+      "note": "Reset \u2014 played only if the challenger won the grand final, forcing a deciding game."
+    }
+  ],
+  "byes": []
+}
