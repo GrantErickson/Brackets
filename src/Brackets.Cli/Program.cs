@@ -39,8 +39,8 @@ static int Generate(ArgParser p)
 
     if (p.Get("pdf") is string pdfPath)
     {
-        PdfBracketRenderer.Save(bracket, pdfPath);
-        Console.WriteLine($"Wrote PDF   -> {pdfPath}");
+        SavePdf(p, bracket, pdfPath);
+        Console.WriteLine($"Wrote PDF   -> {pdfPath}  ({PdfStyle(p)})");
         wroteSomething = true;
     }
 
@@ -65,9 +65,27 @@ static int Pdf(ArgParser p)
         ? BracketJson.Deserialize(File.ReadAllText(inputPath))
         : BuildBracket(p);
 
-    PdfBracketRenderer.Save(bracket, outPath);
-    Console.WriteLine($"Wrote PDF -> {outPath}");
+    SavePdf(p, bracket, outPath);
+    Console.WriteLine($"Wrote PDF -> {outPath}  ({PdfStyle(p)})");
     return 0;
+}
+
+static string PdfStyle(ArgParser p)
+{
+    string style = (p.Get("style") ?? "sheet").ToLowerInvariant();
+    return style is "diagram" or "bracket" ? "diagram" : "sheet";
+}
+
+static void SavePdf(ArgParser p, Bracket bracket, string path)
+{
+    if (PdfStyle(p) == "diagram")
+    {
+        BracketDiagramRenderer.Save(bracket, path);
+    }
+    else
+    {
+        PdfBracketRenderer.Save(bracket, path);
+    }
 }
 
 static int Validate(ArgParser p)
@@ -131,23 +149,26 @@ games and any team can climb back to win the championship. All games in a round 
 sequence number and are played at the same time.
 
 USAGE
-  brackets generate --teams <8-16> [--json <path>] [--pdf <path>] [--names <file>]
-  brackets pdf      (--teams <8-16> | --input <bracket.json>) --output <path>
+  brackets generate --teams <8-16> [--json <path>] [--pdf <path>] [--style <sheet|diagram>] [--names <file>]
+  brackets pdf      (--teams <8-16> | --input <bracket.json>) --output <path> [--style <sheet|diagram>]
   brackets validate (--teams <8-16> | --input <bracket.json>)
   brackets help
 
 OPTIONS
   --teams <n>     Number of teams (8-16).
   --json <path>   Write the bracket as JSON. (generate)
-  --pdf <path>    Write a fillable PDF bracket sheet. (generate)
+  --pdf <path>    Write a fillable PDF. (generate)
   --output <path> Output PDF path. (pdf)
+  --style <s>     PDF layout: 'sheet' (per-round game sheet, default) or 'diagram'
+                  (traditional left-to-right bracket diagram).
   --input <path>  Read a previously generated bracket JSON instead of generating.
   --names <file>  Text file of team names, one per line, assigned to seeds 1..n.
 
 EXAMPLES
   brackets generate --teams 12 --json bracket.json --pdf bracket.pdf
   brackets generate --teams 16          (prints JSON to stdout)
-  brackets pdf --teams 10 --output sheet.pdf");
+  brackets pdf --teams 10 --output sheet.pdf
+  brackets pdf --teams 16 --output diagram.pdf --style diagram");
 
     return exitCode;
 }

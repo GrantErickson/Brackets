@@ -40,7 +40,7 @@ For `N` teams the bracket always has `3N − 3` games (W: `N−1`, B1: `N−2`, 
 | Project | Description |
 |---------|-------------|
 | `src/Brackets.Core` | Models, the bracket generator, validator, simulator, and JSON. No third-party dependencies. |
-| `src/Brackets.Pdf`  | QuestPDF renderer producing a fillable Letter/landscape sheet. |
+| `src/Brackets.Pdf`  | Two QuestPDF renderers: a fillable per-round game **sheet** and a traditional left-to-right bracket **diagram**. |
 | `src/Brackets.Cli`  | Command-line interface. |
 | `tests/Brackets.Tests` | xUnit invariant, simulation, JSON, and PDF tests (every N in 8..16). |
 
@@ -49,8 +49,8 @@ Targets `net10.0` and compiles as **C# 10** (`<LangVersion>10</LangVersion>`).
 ## CLI
 
 ```
-brackets generate --teams <8-16> [--json <path>] [--pdf <path>] [--names <file>]
-brackets pdf      (--teams <8-16> | --input <bracket.json>) --output <path>
+brackets generate --teams <8-16> [--json <path>] [--pdf <path>] [--style <sheet|diagram>] [--names <file>]
+brackets pdf      (--teams <8-16> | --input <bracket.json>) --output <path> [--style <sheet|diagram>]
 brackets validate (--teams <8-16> | --input <bracket.json>)
 brackets help
 ```
@@ -58,18 +58,37 @@ brackets help
 Examples:
 
 ```bash
-# Generate JSON and a printable PDF for 12 teams
+# Generate JSON and a printable game-sheet PDF for 12 teams
 dotnet run --project src/Brackets.Cli -- generate --teams 12 --json bracket.json --pdf bracket.pdf
+
+# Generate a traditional left-to-right bracket diagram
+dotnet run --project src/Brackets.Cli -- pdf --teams 16 --output diagram.pdf --style diagram
 
 # Print the JSON to stdout
 dotnet run --project src/Brackets.Cli -- generate --teams 16
-
-# Make a PDF from a previously generated JSON
-dotnet run --project src/Brackets.Cli -- pdf --input bracket.json --output sheet.pdf
 ```
 
 `--names <file>` takes one team name per line and maps them to seeds `1..N` for the PDF; the JSON
 identity is always the numeric seed.
+
+## PDF styles
+
+Two renderers consume the same generated bracket:
+
+- **`sheet`** (default) — `PdfBracketRenderer`: a hand-fillable game sheet on Letter/landscape, grouped
+  by synchronous round (each round has a "Start time" line), with blank name lines, score boxes, and
+  winner/loser routing per game.
+- **`diagram`** — `BracketDiagramRenderer`: a traditional left-to-right bracket. Teams start at the left
+  and advance right to the champion. The three decks are stacked in vertical bands (Winners, 1-loss,
+  2-loss) with the finals on the right; cross-deck loser drops are shown as matched `L → G#` / `L#`
+  labels (rather than long crossing lines). The page is sized to fit the whole diagram (poster style).
+
+```csharp
+using Brackets.Pdf;
+var bracket = BracketGenerator.Generate(new BracketOptions { TeamCount = 16 });
+PdfBracketRenderer.Save(bracket, "sheet.pdf");        // per-round game sheet
+BracketDiagramRenderer.Save(bracket, "diagram.pdf");  // left-to-right bracket diagram
+```
 
 ## JSON shape
 
